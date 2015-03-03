@@ -1,0 +1,11 @@
+
+public class Circle extends DrawnObject{
+
+	private int radius;
+	
+	@Override
+	void draw() {
+		
+	}
+
+}

@@ -1,0 +1,15 @@
+import drawables.*;
+
+public class TelemanProtoPlay {
+
+	public static void main(String[] args) {
+		initCanvas();
+	}
+	
+	void initCanvas(){
+		StdDraw.setCanvasSize(800,600);
+		StdDraw.setXscale(-400, 400);
+		StdDraw.setYscale(-300, 300);
+	}
+
+}

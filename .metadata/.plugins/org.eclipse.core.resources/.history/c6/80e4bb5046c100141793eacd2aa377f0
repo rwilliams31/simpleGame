@@ -1,0 +1,21 @@
+import java.awt.Color;
+
+
+public class Circle extends DrawnObject{
+
+	private int radius;
+	
+	@Override
+	void draw() {
+		Color tmp = StdDraw.getPenColor();
+		StdDraw.setPenColor(color);
+		if(filled){
+			StdDraw.filledCircle(x, y, radius);
+		}
+		else{
+			StdDraw.circle(x, y, radius);
+		}
+		StdDraw.setPenColor(tmp);
+	}
+
+}

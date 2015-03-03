@@ -1,0 +1,53 @@
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
+import drawn.*;
+
+public class TelemanProtoPlay {
+
+	public static void main(String[] args) {
+		initCanvas();
+		play();
+	}
+	
+	static void initCanvas(){
+		StdDraw.setCanvasSize(800,600);
+		StdDraw.setXscale(-400, 400);
+		StdDraw.setYscale(-300, 300);
+	}
+	
+	static void play(){
+		Circle player = new Circle(0, 0, 30, StdDraw.RED);
+		DrawnObject[] objList = new DrawnObject[10];
+		objList[0]=player;
+		
+		while(true){
+			StdDraw.clear();
+			for(int i=0; i<objList.length; i++){
+				if(objList[i]!=null){
+					objList[i].draw();
+				}
+			}
+			
+			StdDraw.show(60);
+			keyListen(player);
+		}
+	}
+
+	static void keyListen(Circle player){
+		int dx=0;
+		int dy=0;
+		if(StdDraw.isKeyPressed(KeyEvent.VK_A)){
+			dx+=-10;
+		}
+		if(StdDraw.isKeyPressed(KeyEvent.VK_D)){
+			dx+=10;
+		}
+		if(StdDraw.isKeyPressed(KeyEvent.VK_W)){
+			dy+=10;
+		}
+		if(StdDraw.isKeyPressed(KeyEvent.VK_S)){
+			dy+=-10;
+		}
+	}
+}

@@ -1,0 +1,27 @@
+import drawables.*;
+
+public class TelemanProtoPlay {
+
+	public static void main(String[] args) {
+		initCanvas();
+		play();
+	}
+	
+	static void initCanvas(){
+		StdDraw.setCanvasSize(800,600);
+		StdDraw.setXscale(-400, 400);
+		StdDraw.setYscale(-300, 300);
+	}
+	
+	static void play(){
+		Circle player = new Circle(0, 0, 30, StdDraw.RED);
+		
+		while(true){
+			StdDraw.show(60);
+			StdDraw.clear();
+			player.draw();
+			
+		}
+	}
+
+}

@@ -1,0 +1,13 @@
+import drawables.*;
+
+public class TelemanProtoPlay {
+
+	public static void main(String[] args) {
+		initCanvas();
+	}
+	
+	void initCanvas(){
+		
+	}
+
+}
