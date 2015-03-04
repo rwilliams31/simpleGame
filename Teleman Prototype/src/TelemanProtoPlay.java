@@ -1,6 +1,4 @@
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-
 import drawn.*;
 
 public class TelemanProtoPlay {
@@ -19,7 +17,8 @@ public class TelemanProtoPlay {
 	}
 	
 	static void play(){
-		Circle player = new Circle(0, 0, 10, StdDraw.RED);
+		Character player = new Character(0, 0, 10, StdDraw.RED);
+		player.setAcc(-2);
 		DrawnObject[] objList = new DrawnObject[10];
 		objList[0]=player;
 		objList[1] = new Rectangle(0, -270, 350, 15, StdDraw.BLUE); //teleCharge bar container
@@ -47,7 +46,7 @@ public class TelemanProtoPlay {
 		}
 	}
 
-	static int[] keyListen(Circle player){
+	static int[] keyListen(Character player){
 		int dx=0;
 		int dy=0;
 		if(StdDraw.isKeyPressed(KeyEvent.VK_A)){
@@ -56,8 +55,10 @@ public class TelemanProtoPlay {
 		if(StdDraw.isKeyPressed(KeyEvent.VK_D)){
 			dx+=5;
 		}
-		if(StdDraw.isKeyPressed(KeyEvent.VK_W)){
-			dy+=5;
+		if(StdDraw.isKeyPressed(KeyEvent.VK_W) && player.canJump()){
+			dy+=1; //used to get the player off of the ground initially
+			player.setDy(20);
+			player.canJump(false);
 		}
 		if(StdDraw.isKeyPressed(KeyEvent.VK_S)){
 			dy+=-5;
@@ -84,9 +85,19 @@ public class TelemanProtoPlay {
 		bar.setWidth(teleCharge);
 		bar.setX(-175 + teleCharge/2);
 	}
-	static void gravity(Circle player, Rectangle ground){
+	static void gravity(Character player, Rectangle ground){
 		if(!player.collidesWith(ground)){
-			player.move(0, -5);
+			player.fall();
+			player.move(0, player.getDy());
+		}
+		else {
+			player.setY(ground.getY()+ground.getHeight()/2+player.getRadius());
+			player.setDy(0);
+			player.canJump(true);
+		}
+		
+		if(player.getY()<-300){
+			player.setY(300);
 		}
 	}
 }

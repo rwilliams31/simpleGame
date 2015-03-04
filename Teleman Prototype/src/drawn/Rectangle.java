@@ -49,15 +49,15 @@ public class Rectangle extends DrawnObject {
 	}
 	
 	public boolean collidesWith(Rectangle other){
-		return this.x + this.width/2 > other.x - other.getWidth()/2 && 
-				this.x - this.width/2 < other.x + other.getWidth()/2 &&
-				this.y + this.height/2 > other.y - other.getHeight()/2 &&
-				this.y - this.height/2 < other.y + other.getHeight()/2;
+		return this.x + this.width/2 >= other.x - other.getWidth()/2 && 
+				this.x - this.width/2 <= other.x + other.getWidth()/2 &&
+				this.y + this.height/2 >= other.y - other.getHeight()/2 &&
+				this.y - this.height/2 <= other.y + other.getHeight()/2;
 	}
 	public boolean collidesWith(Circle other){
-		return this.x + this.width/2 > other.x - other.getRadius() && 
-				this.x - this.width/2 < other.x + other.getRadius() &&
-				this.y + this.height/2 > other.y - other.getRadius() &&
-				this.y - this.height/2 < other.y + other.getRadius();
+		return this.x + this.width/2 >= other.x - other.getRadius() && 
+				this.x - this.width/2 <= other.x + other.getRadius() &&
+				this.y + this.height/2 >= other.y - other.getRadius() &&
+				this.y - this.height/2 <= other.y + other.getRadius();
 	}
 }

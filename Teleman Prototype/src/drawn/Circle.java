@@ -51,9 +51,9 @@ public class Circle extends DrawnObject{
 		return Math.sqrt((this.x-other.x)*(this.x-other.x) - (this.y-other.y)*(this.y-other.y)) <= (this.radius+other.radius);
 	}
 	public boolean collidesWith(Rectangle other){
-		return this.x + this.radius > other.x - other.getWidth()/2 && 
-				this.x - this.radius < other.x + other.getWidth()/2 &&
-				this.y + this.radius > other.y - other.getHeight()/2 &&
-				this.y - this.radius < other.y + other.getHeight()/2;
+		return this.x + this.radius >= other.x - other.getWidth()/2 && 
+				this.x - this.radius <= other.x + other.getWidth()/2 &&
+				this.y + this.radius >= other.y - other.getHeight()/2 &&
+				this.y - this.radius <= other.y + other.getHeight()/2;
 	}
 }
